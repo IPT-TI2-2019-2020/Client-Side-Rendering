@@ -19,7 +19,7 @@ export default class RouterComponent extends React.Component {
         <Navbar bg="dark" variant="dark" expand="lg">
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
-              <NavLink to="/" component={Nav.Link}>Home</NavLink>
+              <NavLink to="*" component={Nav.Link}>Home</NavLink>
               <NavLink to="/about" component={Nav.Link}>Lesson 3</NavLink>
               <NavLink to="/book/list" component={Nav.Link}>
                 Lesson 4 - Books
@@ -33,7 +33,7 @@ export default class RouterComponent extends React.Component {
           <Route exact path="/about" component={About} />
           <Route exact path="/book/list" component={BookListPage} />
           <Route exact path="/book/details/:id" component={BookDetailsPage} />
-          <Route exact path="/" component={Home} />
+          <Route exact path="*" component={Home} />
         </Switch>
       </Router>
     );
