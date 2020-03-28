@@ -1,5 +1,10 @@
 import React from 'react';
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  NavLink,
+} from 'react-router-dom';
 import {Navbar, Nav} from 'react-bootstrap';
 
 import Home from '../pages/home/Home';
@@ -14,18 +19,21 @@ export default class RouterComponent extends React.Component {
         <Navbar bg="dark" variant="dark" expand="lg">
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
-              <Nav.Link href="/">Home</Nav.Link>
-              <Nav.Link href="/about">About</Nav.Link>
-              <Nav.Link href="/book/list">Books</Nav.Link>
+              <NavLink to="/" component={Nav.Link}>Home</NavLink>
+              <NavLink to="/about" component={Nav.Link}>Lesson 3</NavLink>
+              <NavLink to="/book/list" component={Nav.Link}>
+                Lesson 4 - Books
+              </NavLink>
             </Nav>
           </Navbar.Collapse>
         </Navbar>
 
         <Switch>
-          <Route exact path="/" component={Home} />
+
           <Route exact path="/about" component={About} />
           <Route exact path="/book/list" component={BookListPage} />
           <Route exact path="/book/details/:id" component={BookDetailsPage} />
+          <Route exact path="/" component={Home} />
         </Switch>
       </Router>
     );

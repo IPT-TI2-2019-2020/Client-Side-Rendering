@@ -41,7 +41,7 @@ export default class BookDetailsPage extends React.Component {
         <Button
           variant="outline-primary"
           style={{margin: '10px 0'}}
-          onClick={() => this.props.history.push ('/book/list')}
+          onClick={() => this.props.history.goBack()}
         >
           <FontAwesomeIcon icon={faArrowLeft} />&nbsp;Back to list
         </Button>
@@ -93,7 +93,7 @@ export default class BookDetailsPage extends React.Component {
                 bookId={book._id}
                 show={toRemove}
                 handleClose={() => this.setState ({toRemove: false})}
-                removed={() => this.props.history.push ('/book/list')}
+                removed={() => this.props.history.goBack()}
               />
               <SubmitDialogComponent
                 book={book}
