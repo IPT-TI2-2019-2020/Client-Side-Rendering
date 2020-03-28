@@ -4,6 +4,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faInfo, faPlus, faRecycle} from '@fortawesome/free-solid-svg-icons';
 import bookService from '../../services/book';
 import SubmitDialogComponent from '../../components/book/SubmitDialog';
+import './Book.css';
 
 export default class BookListPage extends React.Component {
   constructor (props) {
@@ -40,20 +41,22 @@ export default class BookListPage extends React.Component {
             {error}
           </Alert>}
 
-        <Button
-          variant="outline-primary"
-          style={{margin: '10px 0'}}
-          onClick={() => this.setState ({toCreate: true})}
-        >
-          <FontAwesomeIcon icon={faPlus} />&nbsp;Add new book
-        </Button>&nbsp;
-        <Button
-          variant="outline-primary"
-          style={{margin: '10px 0'}}
-          onClick={() => this.resetList ()}
-        >
-          <FontAwesomeIcon icon={faRecycle} />
-        </Button>
+        <div className="buttons-container">
+          <Button
+            variant="outline-primary"
+            style={{alignSelf: 'flex-start'}}
+            onClick={() => this.setState ({toCreate: true})}
+          >
+            <FontAwesomeIcon icon={faPlus} />&nbsp;Add new book
+          </Button>
+          <Button
+            variant="outline-dark"
+            style={{alignSelf: 'flex-end'}}
+            onClick={() => this.resetList ()}
+          >
+            <FontAwesomeIcon icon={faRecycle} />&nbsp;Reset list
+          </Button>
+        </div>
 
         <SubmitDialogComponent
           show={toCreate}

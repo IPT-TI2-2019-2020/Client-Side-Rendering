@@ -25,8 +25,11 @@ export default class RemoveDialogComponent extends React.Component {
           <Modal.Title>Remove book</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          If you proceed this action this element will be permenantly deleted from the system! Are you sure?&nbsp;
+          If you proceed this action this element will be permenantly deleted from the system!
+          <br />
+          Are you sure?
           <FontAwesomeIcon
+            style={{marginLeft: 10}}
             onClick={() => this.setState ({sure: !sure})}
             icon={sure ? faCheckSquare : faSquare}
           />

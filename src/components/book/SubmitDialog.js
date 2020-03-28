@@ -8,8 +8,12 @@ export default class SubmitDialogComponent extends React.Component {
   constructor (props) {
     super (props);
     this.toEdit = props.book !== undefined;
-    this.state = this.toEdit
-      ? props.book
+    this.state = this.getFormState ();
+  }
+
+  getFormState () {
+    return this.toEdit
+      ? this.props.book
       : {
           title: '',
           collection: '',
@@ -31,12 +35,17 @@ export default class SubmitDialogComponent extends React.Component {
     }
   }
 
+  handleCancel () {
+    this.setState (this.getFormState ());
+    this.props.handleClose ();
+  }
+
   render () {
-    const {show, handleClose} = this.props;
+    const {show} = this.props;
     const {title, collection, author, publish_year} = this.state;
 
     return (
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={this.handleCancel}>
         <Modal.Header>
           <Modal.Title>{this.toEdit ? 'Edit book' : 'Create book'}</Modal.Title>
         </Modal.Header>
@@ -78,7 +87,7 @@ export default class SubmitDialogComponent extends React.Component {
 
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" onClick={this.props.handleClose}>
+            <Button variant="secondary" onClick={() => this.handleCancel ()}>
               Cancel
             </Button>
             <Button variant="primary" type="submit">Save</Button>
