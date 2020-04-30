@@ -6,5 +6,4 @@ export default {
   create: (body) => apiRequest("POST", `/book`, body),
   update: (id, body) => apiRequest("PUT", `/book/${id}`, body),
   remove: (id) => apiRequest("DELETE", `/book/${id}`),
-  reset: () => apiRequest("PATCH", `/book`),
 };

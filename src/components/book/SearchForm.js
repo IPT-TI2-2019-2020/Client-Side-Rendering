@@ -15,14 +15,12 @@ export default class SearchFormComponent extends React.Component {
   }
 
   render() {
-    const { text } = this.state;
-
     return (
       <Form onSubmit={(evt) => this.handleSubmit(evt)}>
         <Row>
           <Col style={{ padding: 0 }}>
             <Form.Group>
-              <Form.Control value={text} onChange={(evt) => this.setState({ text: evt.target.value })} />
+              <Form.Control value={this.state.text} onChange={(evt) => this.setState({ text: evt.target.value })} />
             </Form.Group>
           </Col>
           <Col xs={2} style={{ padding: 0 }}>

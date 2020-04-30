@@ -69,7 +69,7 @@ export default class BookListPage extends React.Component {
             <FontAwesomeIcon icon={faPlus} />
             &nbsp;Add new book
           </Button>
-          <SearchFormComponent search={(text) => this.getList(text)} />
+          {!favorites && <SearchFormComponent search={(text) => this.getList(text)} />}
         </div>
 
         <SubmitDialogComponent
