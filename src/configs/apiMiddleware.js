@@ -1,9 +1,13 @@
 const serverURL = "http://localhost:5000";
 
-export const apiRequest = (method, route, body) => {
+export const apiRequest = (method, route, body, query) => {
   let currentUser = sessionStorage.getItem("user");
   return new Promise((resolve, reject) => {
-    fetch(serverURL + route, {
+    let serviceUrl = serverURL + route;
+    if (query) {
+      serverURL += getQueryString(query);
+    }
+    fetch(serviceUrl, {
       method,
       headers: {
         "Content-Type": "application/json",
@@ -11,13 +15,7 @@ export const apiRequest = (method, route, body) => {
       },
       ...(body && { body: JSON.stringify(body) }),
     })
-      .then(async (res) => {
-        if (res.ok) {
-          return await res.json();
-        } else {
-          throw Error(await res.text());
-        }
-      })
+      .then((res) => parseResponse(res))
       .then((data) => resolve(data))
       .catch((err) => {
         console.error(`error ${method} ${route}: ${err.message}`);
@@ -25,3 +23,18 @@ export const apiRequest = (method, route, body) => {
       });
   });
 };
+
+const parseResponse = (response) =>
+  new Promise((resolve, reject) => {
+    if (response.ok) {
+      resolve(response.json());
+    } else {
+      reject(response.text());
+    }
+  });
+
+const getQueryString = (query) =>
+  "?" +
+  Object.entries(query)
+    .map(([key, value]) => `${key}=${value}`)
+    .join("&");
