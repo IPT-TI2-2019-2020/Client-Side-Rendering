@@ -19,9 +19,14 @@ export default class NavbarComponent extends React.Component {
                 Lesson 3
               </Nav.Link>
               {user && (
-                <Nav.Link as={NavLink} to="/book/list">
-                  Lesson 4-Books
-                </Nav.Link>
+                <>
+                  <Nav.Link as={NavLink} to="/book/list">
+                    Lesson 4-Books
+                  </Nav.Link>
+                  <Nav.Link as={NavLink} to="/book/favorites">
+                    Lesson 8-Favorites
+                  </Nav.Link>
+                </>
               )}
             </Nav>
             <Nav>

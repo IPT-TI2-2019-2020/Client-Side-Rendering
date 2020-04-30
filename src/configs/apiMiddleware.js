@@ -11,7 +11,13 @@ export const apiRequest = (method, route, body) => {
       },
       ...(body && { body: JSON.stringify(body) }),
     })
-      .then((res) => res.json())
+      .then(async (res) => {
+        if (res.ok) {
+          return await res.json();
+        } else {
+          throw Error(await res.text());
+        }
+      })
       .then((data) => resolve(data))
       .catch((err) => {
         console.error(`error ${method} ${route}: ${err.message}`);

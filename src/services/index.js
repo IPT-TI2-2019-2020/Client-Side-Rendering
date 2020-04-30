@@ -1,7 +1,7 @@
 import bookService from "./book.js";
-import authService from "./auth.js";
+import userService from "./user.js";
 
 export default {
   book: bookService,
-  auth: authService,
+  user: userService,
 };

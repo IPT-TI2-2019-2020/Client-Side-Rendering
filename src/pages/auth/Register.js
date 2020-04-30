@@ -9,7 +9,7 @@ export default class RegisterPage extends React.Component {
   }
   handleSubmit(evt) {
     evt.preventDefault();
-    services.auth.register(this.state).then(() => {
+    services.user.register(this.state).then(() => {
       this.props.history.push("/login");
     });
   }

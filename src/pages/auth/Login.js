@@ -14,7 +14,7 @@ export default class LoginPage extends React.Component {
 
   handleSubmit(evt) {
     evt.preventDefault();
-    services.auth
+    services.user
       .login(this.state)
       .then((data) => {
         this.context.login({ username: this.state.username, ...data });
