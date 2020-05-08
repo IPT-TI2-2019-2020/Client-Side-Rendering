@@ -36,7 +36,7 @@ export default class BookListPage extends React.Component {
         .catch((err) => this.setState({ error: err }));
     else
       services.user
-        .getBooks(searchText)
+        .getBooks()
         .then((value) => this.setState({ books: value, favorites: true }))
         .catch((err) => this.setState({ error: err }));
   }
@@ -55,6 +55,7 @@ export default class BookListPage extends React.Component {
   }
 
   render() {
+    
     const { books, error, toCreate, favorites } = this.state;
 
     return (
