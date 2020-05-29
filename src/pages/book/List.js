@@ -55,7 +55,6 @@ export default class BookListPage extends React.Component {
   }
 
   render() {
-    
     const { books, error, toCreate, favorites } = this.state;
 
     return (
@@ -82,6 +81,7 @@ export default class BookListPage extends React.Component {
         <Table responsive>
           <thead>
             <tr>
+              <th></th>
               <th>Title</th>
               <th>Author</th>
               <th />
@@ -90,6 +90,9 @@ export default class BookListPage extends React.Component {
           <tbody>
             {books.map((book, index) => (
               <tr key={`book${index}`}>
+                <td>
+                  <img style={{ width: 60}} src={book.cover} />
+                </td>
                 <td>{book.title}</td>
                 <td>{book.author}</td>
                 <td style={{ textAlign: "right" }}>
